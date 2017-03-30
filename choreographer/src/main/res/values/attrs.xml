@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="RippleFollowButton">
+        <attr name="textSize" format="dimension"/>
+        <attr name="followText" format="string"/>
+        <attr name="unfollowText" format="string"/>
+        <attr name="followTextColor" format="color"/>
+        <attr name="unfollowTextColor" format="color"/>
+        <attr name="followBackgroundColor" format="color"/>
+        <attr name="unfollowBackgroundColor" format="color"/>
+    </declare-styleable>
+</resources>

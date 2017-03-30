@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context="com.hezhi.niceview.MainActivity">
+
+<com.hezhi.choreographer.RippleFollowButton
+    android:id="@+id/rfp_test"
+    android:layout_width="78dp"
+    android:layout_height="48dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:unfollowTextColor="@android:color/white"
+    app:followTextColor="@android:color/white"
+    app:textSize="12sp"
+    app:followBackgroundColor="@color/color_4CAF50"
+    app:unfollowBackgroundColor="@color/color_9E9E9E"/>
+
+
+</android.support.constraint.ConstraintLayout>
