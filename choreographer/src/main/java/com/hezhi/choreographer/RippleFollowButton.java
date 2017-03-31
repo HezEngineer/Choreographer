@@ -25,12 +25,11 @@ import android.widget.TextView;
  */
 
 public class RippleFollowButton extends FrameLayout {
-    public static final int DEFAULT = 0;
     public static final int DEFAULT_FOLLOWTEXTCOLOR = Color.WHITE;
     public static final int DEFAULT_UNFOLLOWTEXTCOLOR = Color.BLACK;
     public static final int DEFAULT_FOLLOWBACKGROUNDCOLOR = Color.RED;
     public static final int DEFAULT_UNFOLLOWBACKGROUNDCOLOR = Color.WHITE;
-    public static final String DEFAULT_FOLLOWTEXT= "关注";
+    public static final String DEFAULT_FOLLOWTEXT= "+ 关注";
     public static final String DEFAULT_UNFOLLOWTEXT = "取消关注";
 
     private boolean isFollowed = false;//默认为false 还没有关注
@@ -99,10 +98,14 @@ public class RippleFollowButton extends FrameLayout {
 
         if(a.hasValue(R.styleable.RippleFollowButton_followTextColor)) {
             setFollowedTextColor(a.getColor(R.styleable.RippleFollowButton_followTextColor,DEFAULT_FOLLOWTEXTCOLOR));
+        } else {
+            setFollowedTextColor(DEFAULT_FOLLOWTEXTCOLOR);
         }
 
         if(a.hasValue(R.styleable.RippleFollowButton_followBackgroundColor)) {
             setfollowedBackgroundColor(a.getColor(R.styleable.RippleFollowButton_followBackgroundColor,DEFAULT_FOLLOWBACKGROUNDCOLOR));
+        } else {
+            setfollowedBackgroundColor(DEFAULT_FOLLOWBACKGROUNDCOLOR);
         }
 
         if(a.hasValue((R.styleable.RippleFollowButton_unfollowText))) {
@@ -113,10 +116,14 @@ public class RippleFollowButton extends FrameLayout {
 
         if(a.hasValue(R.styleable.RippleFollowButton_unfollowTextColor)) {
             setUnfollowedTextColor(a.getColor(R.styleable.RippleFollowButton_unfollowTextColor,DEFAULT_UNFOLLOWTEXTCOLOR));
+        } else {
+            setUnfollowedTextColor(DEFAULT_UNFOLLOWTEXTCOLOR);
         }
 
         if(a.hasValue(R.styleable.RippleFollowButton_unfollowBackgroundColor)) {
             setUnfollowedBackgroundColor(a.getColor(R.styleable.RippleFollowButton_unfollowBackgroundColor,DEFAULT_UNFOLLOWBACKGROUNDCOLOR));
+        } else {
+            setUnfollowedBackgroundColor(DEFAULT_UNFOLLOWBACKGROUNDCOLOR);
         }
 
         a.recycle();
@@ -155,7 +162,7 @@ public class RippleFollowButton extends FrameLayout {
     public boolean onTouchEvent(MotionEvent event) {
         if(firstInit) {
             animator = ObjectAnimator.ofFloat(tvUnfollow,"empty",0F,(float) Math.hypot(getMeasuredWidth(),getMeasuredHeight()));
-            animator.setDuration(5000L);
+            animator.setDuration(500L);
             animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                 @Override
                 public void onAnimationUpdate(ValueAnimator animation) {
@@ -211,6 +218,8 @@ public class RippleFollowButton extends FrameLayout {
         }
         return false;
     }
+
+
 
 
     @Override

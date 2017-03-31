@@ -6,7 +6,7 @@
         <attr name="unfollowText" format="string"/>
         <attr name="followTextColor" format="color"/>
         <attr name="unfollowTextColor" format="color"/>
-        <attr name="followBackgroundColor" format="color"/>
+        <attr name="followBackgroundColor" format="reference|color"/>
         <attr name="unfollowBackgroundColor" format="color"/>
     </declare-styleable>
 </resources>
