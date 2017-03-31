@@ -33,7 +33,7 @@ public class RippleFollowButton extends FrameLayout {
     public static final String DEFAULT_FOLLOWTEXT= "关注";
     public static final String DEFAULT_UNFOLLOWTEXT = "取消关注";
 
-    private boolean isFollowed = false;
+    private boolean isFollowed = false;//默认为false 还没有关注
     private boolean firstInit = true;
 
     private float centerX;
@@ -77,6 +77,9 @@ public class RippleFollowButton extends FrameLayout {
         tvFollow.setSingleLine();
         addView(this.tvUnfollow);
         addView(this.tvFollow);
+
+
+
 
         path = new Path();
 
@@ -229,9 +232,9 @@ public class RippleFollowButton extends FrameLayout {
     protected void setFollow(final boolean isFollowed, boolean needAnim) {
         this.isFollowed = isFollowed;
         if (isFollowed) {
-            bringChildToFront(this.tvFollow);
-        } else {
             bringChildToFront(this.tvUnfollow);
+        } else {
+            bringChildToFront(this.tvFollow);
         }
         if(needAnim) {
             animator.start();
@@ -239,10 +242,12 @@ public class RippleFollowButton extends FrameLayout {
     }
 
     private boolean needDrawChild(View child) {
-        if (isFollowed && child == tvUnfollow) {
+        if(firstInit) {
+            return  true;
+        }
+        if (isFollowed && child == tvFollow) {
             return true;
-        } else if (!isFollowed && child == tvFollow) {
-
+        } else if (!isFollowed && child == tvUnfollow) {
             return true;
         }
         return false;
