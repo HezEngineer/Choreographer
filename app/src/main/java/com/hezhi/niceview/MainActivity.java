@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         rfp_test = (RippleFollowButton) findViewById(R.id.rfp_test);
+        rfp_test.setFollowed(false);
         rfp_test.setOnFollowListener(new RippleFollowButton.OnFollowListener() {
             @Override
             public void onFollow() {
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onUnFollow() {
-                Toast.makeText(MainActivity.this, "点击未关注按钮发取消请求", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "点击取消关注按钮发取消请求", Toast.LENGTH_SHORT).show();
 
             }
         });

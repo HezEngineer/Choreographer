@@ -75,11 +75,9 @@ public class RippleFollowButton extends FrameLayout {
         tvFollow = new TextView(getContext());
         tvFollow.setGravity(Gravity.CENTER);
         tvFollow.setSingleLine();
+
         addView(this.tvUnfollow);
         addView(this.tvFollow);
-
-
-
 
         path = new Path();
 
@@ -305,5 +303,24 @@ public class RippleFollowButton extends FrameLayout {
         void onUnFollow();
     }
 
+    public boolean isFollowed() {
+        return isFollowed;
+    }
 
+    public void setFollowed(boolean followed) {
+        isFollowed = followed;
+        if(tvFollow!=null || tvUnfollow != null) {
+            removeAllViews();
+        }
+        if(isFollowed) {
+            addView(tvFollow);
+            addView(tvUnfollow);
+
+        }else{
+            addView(tvUnfollow);
+            addView(tvFollow);
+        }
+        requestLayout();
+        invalidate();
+    }
 }
