@@ -9,8 +9,8 @@ tools:context="com.hezhi.niceview.MainActivity">
 
     <com.hezhi.choreographer.RippleFollowButton
         android:id="@+id/rfp_test"
-        android:layout_width="100dp"
-        android:layout_height="48dp"
+        android:layout_width="75dp"
+        android:layout_height="36dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

@@ -26,9 +26,9 @@ import android.widget.TextView;
 
 public class RippleFollowButton extends FrameLayout {
     public static final int DEFAULT_FOLLOWTEXTCOLOR = Color.WHITE;
-    public static final int DEFAULT_UNFOLLOWTEXTCOLOR = Color.BLACK;
-    public static final int DEFAULT_FOLLOWBACKGROUNDCOLOR = Color.RED;
-    public static final int DEFAULT_UNFOLLOWBACKGROUNDCOLOR = Color.WHITE;
+    public static final int DEFAULT_UNFOLLOWTEXTCOLOR = Color.WHITE;
+    public static final int DEFAULT_FOLLOWBACKGROUNDCOLOR = Color.parseColor("#45CB7F");
+    public static final int DEFAULT_UNFOLLOWBACKGROUNDCOLOR = Color.parseColor("#E0E0E0");
     public static final String DEFAULT_FOLLOWTEXT= "+ 关注";
     public static final String DEFAULT_UNFOLLOWTEXT = "取消关注";
 
@@ -162,7 +162,7 @@ public class RippleFollowButton extends FrameLayout {
     public boolean onTouchEvent(MotionEvent event) {
         if(firstInit) {
             animator = ObjectAnimator.ofFloat(tvUnfollow,"empty",0F,(float) Math.hypot(getMeasuredWidth(),getMeasuredHeight()));
-            animator.setDuration(500L);
+            animator.setDuration(5000L);
             animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                 @Override
                 public void onAnimationUpdate(ValueAnimator animation) {
