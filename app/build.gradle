@@ -66,12 +66,12 @@ android {
 
     applicationVariants.all { variant ->
         variant.outputs.each { output ->
-            def newName = appName + '-' +APP_VERSION_NAME + '-' + variant.productFlavors[0].name  + variant.buildType.name + '-' +timeNow +'.apk'
 
+            def appName = "编舞者"
+            def newName = appName + '-' +APP_VERSION_NAME + '-' + variant.productFlavors[0].name  + variant.buildType.name + '-' +timeNow +'.apk'
             def timeNow = getDate();
             def oldFile = output.outputFile
             def outDirectory = oldFile.parent
-            def appName = "编舞者"
             if("true".equals(IS_JENKINS)) {
                 outDirectory = 'F:/Tomcat/webapps/jenkins/apk/'+getDate();
             } else {
