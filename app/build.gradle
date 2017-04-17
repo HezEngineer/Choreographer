@@ -20,7 +20,7 @@ android {
     signingConfigs {
         releaseConfig {
             if("true".equals(IS_JENKINS)) {
-                storeFile file("F:/Tomcat/webapps/key/keystore")
+                storeFile file("F:/Tomcat/webapps/key/keystore.jks")
             } else {
                 storeFile file("../keystore")
             }
