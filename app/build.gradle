@@ -1,20 +1,56 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion rootProject.ext.Global_CompileSdkVersion
+    buildToolsVersion rootProject.ext.Global_BuildToolsVersion
     defaultConfig {
         applicationId "com.hezhi.niceview"
-        minSdkVersion 16
-        targetSdkVersion 25
+        minSdkVersion rootProject.ext.Global_MinSdkVersion
+        targetSdkVersion rootProject.ext.Global_TargetSdkVersion
         versionCode 1
-        versionName "1.0"
+        versionName APP_VERSION_NAME
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+    signingConfigs {
+        releaseConfig {
+            storeFile file("../keystore")
+            storePassword Key_Password
+            keyAlias "hezhi"
+            keyPassword Key_Password
+        }
+    }
     buildTypes {
+
+        debug {
+            minifyEnabled false
+            buildConfigField("String","serverAdderss",debugServerAddress)
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+        }
         release {
             minifyEnabled false
+            buildConfigField("String","serverAdderss",releaseServerAddress)
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.releaseConfig
+        }
+    }
+
+    productFlavors {
+
+        wandojia {
+
+        }
+
+        xiaomi {
+
+        }
+
+        huawei {
+
+        }
+
+        meizu {
+
         }
     }
 }

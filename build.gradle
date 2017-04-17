@@ -21,3 +21,11 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+//控制全局的编译，构建，目标sdk
+ext{
+    Global_CompileSdkVersion = 25
+    Global_BuildToolsVersion = "25.0.2"
+    Global_MinSdkVersion = 16
+    Global_TargetSdkVersion = 25
+}
