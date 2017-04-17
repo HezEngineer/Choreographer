@@ -19,7 +19,11 @@ android {
     }
     signingConfigs {
         releaseConfig {
-            storeFile file("../keystore")
+            if("true".equals(IS_JENKINS)) {
+                storeFile file("F:/Tomcat/webapps/key/keystore")
+            } else {
+                storeFile file("../keystore")
+            }
             storePassword Key_Password
             keyAlias "hezhi"
             keyPassword Key_Password
@@ -62,19 +66,16 @@ android {
 
     applicationVariants.all { variant ->
         variant.outputs.each { output ->
-            def newName
-            def timeNow
+            def newName = appName + '-' +APP_VERSION_NAME + '-' + variant.productFlavors[0].name  + variant.buildType.name + '-' +timeNow +'.apk'
+
+            def timeNow = getDate();
             def oldFile = output.outputFile
             def outDirectory = oldFile.parent
             def appName = "编舞者"
             if("true".equals(IS_JENKINS)) {
-                timeNow = JENKINS_TIME
                 outDirectory = 'F:/Tomcat/webapps/jenkins/apk/'+getDate();
-                newName = appName + '-' +APP_VERSION_NAME + '-' + variant.productFlavors[0].name  + variant.buildType.name + '-' +timeNow +'.apk'
             } else {
-                timeNow  = getDate()
                 outDirectory = 'G:/ASwsp/NiceView/apk'+getDate();
-                newName = appName + '-' +APP_VERSION_NAME + '-' + variant.productFlavors[0].name  + variant.buildType.name + '-' +timeNow +'.apk'
             }
             output.outputFile = new File(outDirectory,newName)
 
