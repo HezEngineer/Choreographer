@@ -1,5 +1,11 @@
 apply plugin: 'com.android.application'
 
+def getDate() {
+    def date = new Date()
+    def formmedDate = date.format("yyyyMMddHHmm")
+    return formmedDate
+}
+
 android {
     compileSdkVersion rootProject.ext.Global_CompileSdkVersion
     buildToolsVersion rootProject.ext.Global_BuildToolsVersion
@@ -53,6 +59,30 @@ android {
 
         }
     }
+
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            def newName
+            def timeNow
+            def oldFile = output.outputFile
+            def outDirectory = oldFile.parent
+            def appName = "编舞者"
+            if("true".equals(IS_JENKINS)) {
+                timeNow = JENKINS_TIME
+                outDirectory = 'F:/Tomcat/webapps/jenkins/apk/'+getDate();
+                newName = appName + '-' +APP_VERSION_NAME + '-' + variant.productFlavors[0].name  + variant.buildType.name + '-' +timeNow +'.apk'
+            } else {
+                timeNow  = getDate()
+                outDirectory = 'G:/ASwsp/NiceView/apk'+getDate();
+                newName = appName + '-' +APP_VERSION_NAME + '-' + variant.productFlavors[0].name  + variant.buildType.name + '-' +timeNow +'.apk'
+            }
+            output.outputFile = new File(outDirectory,newName)
+
+        }
+
+    }
+
+
 }
 
 dependencies {
