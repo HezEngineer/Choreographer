@@ -68,8 +68,8 @@ android {
         variant.outputs.each { output ->
 
             def appName = "编舞者"
-            def newName = appName + '-' +APP_VERSION_NAME + '-' + variant.productFlavors[0].name  + variant.buildType.name + '-' +timeNow +'.apk'
             def timeNow = getDate();
+            def newName = appName + '-' +APP_VERSION_NAME + '-' + variant.productFlavors[0].name  + variant.buildType.name + '-' +timeNow +'.apk'
             def oldFile = output.outputFile
             def outDirectory = oldFile.parent
             if("true".equals(IS_JENKINS)) {
