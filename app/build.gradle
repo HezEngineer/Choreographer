@@ -37,7 +37,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 
         }
-        release {
+        Release {
             minifyEnabled false
             buildConfigField("String","serverAdderss",releaseServerAddress)
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
