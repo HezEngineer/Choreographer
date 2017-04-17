@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 def getDate() {
     def date = new Date()
-    def formmedDate = date.format("yyyyMMddHHmm")
+    def formmedDate = date.format("yyyy-MM-ddHHmm")
     return formmedDate
 }
 
@@ -25,7 +25,7 @@ android {
                 storeFile file("../keystore")
             }
             storePassword Key_Password
-            keyAlias "hezhi"
+            keyAlias "onepiece"
             keyPassword Key_Password
         }
     }
@@ -69,7 +69,7 @@ android {
 
             def appName = "编舞者"
             def timeNow = getDate();
-            def newName = appName + '-' +APP_VERSION_NAME + '-' + variant.productFlavors[0].name  + variant.buildType.name + '-' +timeNow +'.apk'
+            def newName = appName + '-' + variant.productFlavors[0].name  + variant.buildType.name + '-' + APP_VERSION_NAME+'-'+timeNow +'.apk'
             def oldFile = output.outputFile
             def outDirectory = oldFile.parent
             if("true".equals(IS_JENKINS)) {
