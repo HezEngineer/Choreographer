@@ -75,9 +75,9 @@ android {
             def oldFile = output.outputFile
             def outDirectory = oldFile.parent
             if("true".equals(IS_JENKINS)) {
-                outDirectory = 'C:/Users/yf11/.jenkins/workspace/apk'+getDate();
+                outDirectory = 'C:/Users/yf11/.jenkins/workspace/apk/'+getDate();
             } else {
-                outDirectory = 'G:/ASwsp/NiceView/apk'+getDate();
+                outDirectory = 'G:/ASwsp/NiceView/apk/'+getDate();
             }
             output.outputFile = new File(outDirectory,newName)
 
